@@ -1,36 +1,32 @@
 public void setup()
 {
-	size(500,500);
-	background(250);
+	size(550,625);
+	background(55,0,55);
 }
-
 public void draw()
 {
-	fill(250,250,30);
-	myFractal(0,250,250,250);
-	fill(0,0,255); 
-	myFractal(250,250,90,180);
-	fill(255,0,0);
-	myFractal(250,250,270,270);
+	noStroke();
+	//fill(200,200,200);
+	//sierpinski(205,480,100,100);
+	sierpinski(105,670,650);
 }
-
-public void mouseDragged()
+public void mouseDragged()//optional
 {
 
 }
-
-public void myFractal(int x, int y, int x2, int y2)
+public void sierpinski(int x, int y, int len) 
 {
-	if(y2<=100)
-		line(x, y, x2, y2);
+	if(len<=25)
+	{
+		ellipse(x, y, len, len);
+		triangle(x, y+len, x+len, y-len, x+len, y-len);	
+	}
 	else
 	{
-		//y2 = (int)Math.PI/6;
-		myFractal(x/2, y/2, x+10, y+10);
-		myFractal(x/2, y/2, x-20, y-20);
-		myFractal(x/3, y/3, x2, y2);
-		//myFractal(x/8, y/8, x+siz/3, y+siz/3);
-		//myFractal();
-		//myFractal();		
+		sierpinski(x-len/6, y+len/2, len/3);
+		sierpinski(x-len/2, y-len/2, len/2);
+		sierpinski(x+len/3, y-len/2, len/2);
+		//sierpinski(x+len+3,y+len/2,len/2);	
+		//sierpinski(x+len*3,y+len/3,len/2);	
 	}
 }
